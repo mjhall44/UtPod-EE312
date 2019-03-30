@@ -41,9 +41,9 @@ class UtPod
 
        precondition: s is a valid Song
 
-       input parms -
+       input parms - Song (title, artist, size)
 
-       output parms -
+       output parms - 0 or -1 depends on amount of memory left
       */
 
       int addSong(Song const &s);
@@ -56,9 +56,9 @@ class UtPod
            o returns -1 if nothing is removed
 
 
-         input parms -
+         input parms - Song (title, artist, size)
 
-         output parms -
+         output parms - 0 is successful and -1 is nothign removed
       */
 
       int removeSong(Song const &s);
@@ -68,9 +68,9 @@ class UtPod
        *  shuffles the songs into random order
           o will do nothing if there are less than two songs in the current list
 
-         input parms -
+         input parms - pointer to UtPod
 
-         output parms -
+         output parms - nothing
       */
 
       void shuffle();
@@ -80,21 +80,20 @@ class UtPod
        * prints the current list of songs in order from first to last to standard output
        * format - Title, Artist, size in MB (one song per line)
 
-         input parms -
+         input parms - pointer to UtPod
 
-         output parms -
+         output parms - song list
       */
 
       void showSongList();
-
 
       /* FUNCTION - void sortSongList
        *  sorts the songs in ascending order
           o will do nothing if there are less than two songs in the current list
 
-         input parms -
+         input parms - pointer to Utpod
 
-         output parms -
+         output parms - nothing
       */
 
       void sortSongList();
@@ -103,9 +102,9 @@ class UtPod
       /* FUNCTION - void clearMemory
        * clears all the songs from memory
 
-         input parms -
+         input parms - pointer to Utpod
 
-         output parms -
+         output parms - nothing
       */
       void clearMemory();
 
@@ -114,9 +113,9 @@ class UtPod
        *  returns the total amount of memory in the UtPod
           o will do nothing if there are less than two songs in the current list
 
-         input parms -
+         input parms - pointer to UtPod
 
-         output parms -
+         output parms - totSize of UtPod
       */
 
       int getTotalMemory() {
@@ -128,9 +127,9 @@ class UtPod
       /* FUNCTION - int getRemainingMemory
        *  returns the amount of memory available for adding new songs
 
-         input parms -
+         input parms - pointer to UtPod
 
-         output parms -
+         output parms - memSize of UtPod  
       */
 
       int getRemainingMemory();
