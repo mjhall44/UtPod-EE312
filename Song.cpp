@@ -1,6 +1,6 @@
 
 #include "Song.h"
-
+#include "string.h"
 using namespace std;
 
    Song::Song()
@@ -10,7 +10,7 @@ using namespace std;
       size = 0;
    }
 
-   Song::Song(string _title, string _artist, int _size)
+   Song::Song(string _artist, string _title, int _size)
    {
       title = _title;
       artist = _artist;
@@ -37,76 +37,47 @@ using namespace std;
         this->size = _size;
    }  
    
-   void Song::swap(Song &g2)
+   void Song::swap(Song &p)
    {
-      Song temp = g2;
-      g2 = *this;
+      Song temp = p;
+      p = *this;
       *this = temp;
    }
        
    bool Song::operator >(Song const &rhs) 
    {
 
-      if(artist >rhs.artist){
-         return true;
-      } else if(artist < rhs.artist){
-         return false;
-      }
-      if( title > rhs.title){
-         return true;
-      } else if(title < rhs.title){
-
-         return false;
-      }
-
-      if (size > rhs.size) {
-               return true;
-      }
-      return false;
+     if(artist.compare(rhs.artist)==0){
+	if(title.compare(rhs.title)==0){
+		return (size >= rhs.size); //all but size is equal so compare sizes last
+	}
+	return (title.compare( rhs.title) >= 0); //the titles are not equal so return the titles next
+     }else
+	return (artist.compare(rhs.artist) >=0);//the artists are not equal so compare the artist first	
    }
    
    bool Song::operator <(Song const &rhs) 
    {
-
-      if(artist <rhs.artist){
-         return true;
-      } else if(artist>rhs.artist){
-         return false;
-      }
-      if( title < rhs.title){
-         return true;
-      } else if(title > rhs.title){
-
-         return false;
-      }
-
-      if (size < rhs.size) {
-               return true;
-      }
-      return false;
+     if(artist.compare(rhs.artist)==0){
+	if(title.compare(rhs.title)==0){
+		return (size < rhs.size); //all but size is equal so compare sizes last
+	}
+	return (title.compare( rhs.title) < 0); //the titles are not equal so return the titles next
+     }else
+	return (artist.compare(rhs.artist) < 0);//the artists are not equal so compare the artist first	
    }
+
 
    bool Song::operator ==(Song const &rhs) 
    {
-      if( title == rhs.title){
-         if(artist==rhs.artist){
-            if (size == rhs.size) {
-               return true;
-            }
-         
-         }
-      }
-      return false;
+      return (( title == rhs.title)&&(artist==rhs.artist)&&(size == rhs.size));
    }
 
-   Song::~Song()
-   {
-      cout << "in destructor for "<< title <<endl;
-   }
+   Song::~Song(){}
    
    ostream& operator << (ostream& out, const Song &g)
    {
-      out << g.getArtist() << "\t" << g.getTitle() << "\t-" << g.getSize();
+      out << g.getArtist() << "   \t|\t" << g.getTitle() << "   \t|\t" << g.getSize();
       return out;
    }
   
