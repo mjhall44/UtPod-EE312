@@ -7,16 +7,9 @@ using namespace std;
    {
       title = "";
       artist = "";
-      size = MAX_SIZE;
+      size = 0;
    }
 
-   Song::Song(string title)
-   {
-      this->title = title;
-      artist = "";
-      size = MAX_SIZE;
-   }
-   
    Song::Song(string _title, string _artist, int _size)
    {
       title = _title;
@@ -113,7 +106,7 @@ using namespace std;
    
    ostream& operator << (ostream& out, const Song &g)
    {
-      out << g.getTitle() << ", " << g.getArtist() << ", - " << g.getSize();
+      out << g.getArtist() << "\t" << g.getTitle() << "\t-" << g.getSize();
       return out;
    }
   

@@ -13,11 +13,9 @@ class Song {
    string artist;
    int size;
 
-   static const int MAX_SIZE = 5;
  
   public:
    Song();
-   Song(string title);
    Song(string title, string artist, int size);
    
    string getTitle() const 
